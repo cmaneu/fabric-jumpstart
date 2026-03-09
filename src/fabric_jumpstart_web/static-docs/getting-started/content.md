@@ -22,7 +22,14 @@ A workspace is the container where all your Fabric items (lakehouses, notebooks,
 5. Expand **Advanced** and make sure your workspace is assigned to a Fabric capacity (or trial capacity)
 6. Select **Apply**
 
-> **Tip:** Use a dedicated workspace for each jumpstart to make management and cleanup easier. If you need to install multiple jumpstarts in the same workspace, set a unique prefix for each one, for example: `jumpstart.install("demo", item_prefix="demo_")`.
+> **Tip:** Multiple jumpstarts can be deployed in a single workspace. If items with the same name exist across jumpstarts (or already exist in your workspace), the installer will detect the conflict and let you choose how to resolve it:
+>
+> - **Use a dedicated workspace** — deploy each jumpstart in its own workspace to avoid conflicts entirely
+> - **Automatic prefix** — let the installer automatically prefix items to avoid name collisions
+> - **Custom prefix** — set your own prefix, e.g. `jumpstart.install("demo", item_prefix="demo_")`
+> - **Upgrade** — overwrite existing items with conflicting names
+>
+> See [Handling Name Conflicts](https://github.com/microsoft/fabric-jumpstart/tree/main/src/fabric_jumpstart#handling-name-conflicts) for more details.
 
 ## Step 2: Create a Notebook
 
@@ -60,7 +67,7 @@ This displays an interactive catalog of all available jumpstarts with descriptio
 
 ## Step 5: Install a Jumpstart
 
-To deploy a jumpstart into your workspace, use the `install` function with the jumpstart's logical ID:
+Each jumpstart in the catalog includes a ready-to-use install command — just click the copy button and paste it into a notebook cell. For example:
 
 ```python
 import fabric_jumpstart as jumpstart
@@ -76,8 +83,8 @@ The installer will:
 3. Display a progress bar and status updates
 4. Provide a summary of what was installed
 
-> **Note:** Some jumpstarts may take a few minutes to fully deploy depending on the number of items and their sizes.
+> **Note:** Each jumpstart provides an estimated install time. Deployment duration varies based on the number of items, item types, and their sizes.
 
 ## Next Steps
 
-After installing a jumpstart, follow the instructions provided in the jumpstart's entry-point notebook. Each jumpstart includes step-by-step guidance on how to run and explore the scenario.
+After installing a jumpstart, follow the instructions provided in the jumpstart's Getting Started guide. Each jumpstart includes step-by-step guidance on how to run and explore the scenario.
